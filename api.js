@@ -6,13 +6,13 @@ exports.createGame = (req, res) => {
     const data = req.body;
     //validaremos body
     const response = create(data);
-    res.json(response);
+    return res.json(response);
   } catch (e) {
     if (e.code)
-      res.status(e.code).json({
+      return res.status(e.code).json({
         error: e.message,
       });
-    res.json({ message: e.message });
+    return res.json({ message: e.message });
   }
 };
 
@@ -25,13 +25,13 @@ exports.trainArmy = (req, res) => {
     if (!army || !unity)
       error("invalid params... params must be army,unity ", "BAD_REQUEST");
     const response = train(data, army, unity);
-    res.json(response);
+    return res.json(response);
   } catch (e) {
     if (e.code)
-      res.status(e.code).json({
+      return res.status(e.code).json({
         error: e.message,
       });
-    res.json({ message: e.message });
+    return res.json({ message: e.message });
   }
 };
 
@@ -46,13 +46,13 @@ exports.transformArmy = (req, res) => {
       );
 
     const response = transformation(data, army, unityFrom, unityTo);
-    res.json(response);
+    return res.json(response);
   } catch (e) {
     if (e.code)
-      res.status(e.code).json({
+      return res.status(e.code).json({
         error: e.message,
       });
-    res.json({ message: e.message });
+    return res.json({ message: e.message });
   }
 };
 
@@ -64,12 +64,12 @@ exports.runBattle = (req, res) => {
       error("invalid params... params must be army1,army2 ", "BAD_REQUEST");
 
     const response = battle(data, army1, army2);
-    res.json(response);
+    return res.json(response);
   } catch (e) {
     if (e.code)
-      res.status(e.code).json({
+      return res.status(e.code).json({
         error: e.message,
       });
-    res.json({ message: e.message });
+    return res.json({ message: e.message });
   }
 };

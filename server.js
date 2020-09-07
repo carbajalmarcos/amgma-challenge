@@ -3,8 +3,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const { createGame, trainArmy, transformArmy, runBattle } = require("./api");
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json());
 
 app.post("/api/createGame", createGame);
 app.post("/api/trainArmy", trainArmy);
