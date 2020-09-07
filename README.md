@@ -1,5 +1,12 @@
 # Army challenge
 
+## Installation
+
+- clone this repo
+- cd folder container
+- npm install
+- npm start
+
 ### Create game :stuck_out_tongue_winking_eye:
 
 POST /api/createGame
@@ -637,7 +644,7 @@ Response:
 }
 ```
 
-# ToDo!
+## ToDo!
 
 - Testing
 - Data persistance
