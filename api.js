@@ -8,9 +8,11 @@ exports.createGame = (req, res) => {
     const response = create(data);
     res.json(response);
   } catch (e) {
-    res.status(e.code).json({
-      error: e.message,
-    });
+    if (e.code)
+      res.status(e.code).json({
+        error: e.message,
+      });
+    res.json({ message: e.message });
   }
 };
 
@@ -25,9 +27,11 @@ exports.trainArmy = (req, res) => {
     const response = train(data, army, unity);
     res.json(response);
   } catch (e) {
-    res.status(e.code).json({
-      error: e.message,
-    });
+    if (e.code)
+      res.status(e.code).json({
+        error: e.message,
+      });
+    res.json({ message: e.message });
   }
 };
 
@@ -40,12 +44,15 @@ exports.transformArmy = (req, res) => {
         "invalid params... params must be army, unityFrom, unityTo ",
         "BAD_REQUEST"
       );
+
     const response = transformation(data, army, unityFrom, unityTo);
     res.json(response);
   } catch (e) {
-    res.status(e.code).json({
-      error: e.message,
-    });
+    if (e.code)
+      res.status(e.code).json({
+        error: e.message,
+      });
+    res.json({ message: e.message });
   }
 };
 
@@ -59,8 +66,10 @@ exports.runBattle = (req, res) => {
     const response = battle(data, army1, army2);
     res.json(response);
   } catch (e) {
-    res.status(e.code).json({
-      error: e.message,
-    });
+    if (e.code)
+      res.status(e.code).json({
+        error: e.message,
+      });
+    res.json({ message: e.message });
   }
 };

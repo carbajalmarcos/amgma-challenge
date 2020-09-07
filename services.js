@@ -28,6 +28,7 @@ exports.create = (data) => {
 
 //EXCECUTE TRAINING
 exports.train = (gameBoard, armyId, unity) => {
+  unityValidator(unity);
   schemaValidation(gameBoard, gameboardSchema);
   let response = gameBoard,
     army,
@@ -59,6 +60,8 @@ exports.train = (gameBoard, armyId, unity) => {
 //EXCECUTE UNITY TRANSFORMATION
 exports.transformation = (gameBoard, armyId, unityFrom, unityTo) => {
   //some of validations
+  unityValidator(unityFrom);
+  unityValidator(unityTo);
   schemaValidation(gameBoard, gameboardSchema);
   if (
     unityFrom === unityTo ||
@@ -205,4 +208,9 @@ const schemaValidation = (data, schema) => {
   } catch (e) {
     error(`data error : ${e.message}`, "BAD_REQUEST");
   }
+};
+
+const unityValidator = (unity) => {
+  if (!Object.keys(UNITY_NAME).includes(unity))
+    error(`${unity} is invalid unity`, "BAD_REQUEST");
 };
