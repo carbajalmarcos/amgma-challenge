@@ -12,6 +12,7 @@ const {
 const { error } = require("./utils/errorUtil");
 const { createGameSchema, gameboardSchema } = require("./utils/schemas");
 
+//CREATE GAME
 exports.create = (data) => {
   schemaValidation(data, createGameSchema);
   let response = data;
@@ -25,6 +26,7 @@ exports.create = (data) => {
   return response;
 };
 
+//EXCECUTE TRAINING
 exports.train = (gameBoard, armyId, unity) => {
   schemaValidation(gameBoard, gameboardSchema);
   let response = gameBoard,
@@ -54,6 +56,7 @@ exports.train = (gameBoard, armyId, unity) => {
   return response;
 };
 
+//EXCECUTE UNITY TRANSFORMATION
 exports.transformation = (gameBoard, armyId, unityFrom, unityTo) => {
   //some of validations
   schemaValidation(gameBoard, gameboardSchema);
@@ -93,6 +96,8 @@ exports.transformation = (gameBoard, armyId, unityFrom, unityTo) => {
   return response;
 };
 
+//EXCECUTE BATLE
+// feature commentary : in case of tie the  both armies lose the lowest scoring unit
 exports.battle = (gameBoard, army1, army2) => {
   schemaValidation(gameBoard, gameboardSchema);
   let response = gameBoard,
@@ -102,9 +107,7 @@ exports.battle = (gameBoard, army1, army2) => {
     player2Scoring;
 
   if (!player1) error(` ${army1} army not found ! `, "NOT_FOUND");
-  console.log("paso1");
   if (!player2) error(` ${army2} army not found ! `, "NOT_FOUND");
-  console.log("paso", 2);
   player1Scoring = scoringCalculator(player1);
   player2Scoring = scoringCalculator(player2);
 

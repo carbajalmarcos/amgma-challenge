@@ -1,6 +1,6 @@
 # Army challenge
 
-### Create game
+### Create game :stuck_out_tongue_winking_eye:
 
 POST /api/createGame
 
@@ -127,7 +127,7 @@ Response:
 }
 ```
 
-### Train army
+### Train army :muscle:
 
 POST /api/trainArmy?army={army}&unity={unity}
 
@@ -293,7 +293,7 @@ Response:
 }
 ```
 
-### Transform army
+### Transform army :factory:
 
 POST /api/transformArmy?army={army}&unityFrom={unityFrom}&unityTo={unityTo}
 
@@ -459,7 +459,7 @@ Response:
 }
 ```
 
-### Run battle
+### Run battle :fire:
 
 POST /api/battle?army1={army1}&army2={army2}
 
